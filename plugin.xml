@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-TencentLBSPlugin" version="5.1.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>TentcentMapPlugin</name>
+    <js-module name="TentcentMapPlugin" src="www/TentcentMapPlugin.js">
+        <clobbers target="TentcentMapPlugin" />
+    </js-module>
+    <platform name="ios">
+           <config-file target="config.xml" parent="/*">
+               <feature name="TencentMap">
+                   <param name="ios-package" value="TencentMap"/>
+               </feature>
+           </config-file>
+
+
+           <header-file src="src/ios/TencentMap.h" />
+           <source-file src="src/ios/TencentMap.m" />
+  
+           <framework src="src/ios/libs/TencentLBS.framework" custom="true" />
+
+
+       </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="TencentMap">
+                <param name="android-package" value="com.example.loaction.TencentMap"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <!-- Õ®π˝GPSµ√µΩæ´»∑Œª÷√ -->
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <!-- Õ®π˝Õ¯¬Áµ√µΩ¥÷¬‘Œª÷√ -->
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <!-- ∑√Œ Õ¯¬Á. ƒ≥–©Œª÷√–≈œ¢–Ë“™¥”Õ¯¬Á∑˛ŒÒ∆˜ªÒ»° -->
+            <uses-permission android:name="android.permission.INTERNET" />
+            <!-- ∑√Œ WiFi◊¥Ã¨. –Ë“™WiFi–≈œ¢”√”⁄Õ¯¬Á∂®Œª -->
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <!-- –ﬁ∏ƒWiFi◊¥Ã¨. ∑¢∆WiFi…®√Ë, –Ë“™WiFi–≈œ¢”√”⁄Õ¯¬Á∂®Œª -->
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+            <!-- ∑√Œ Õ¯¬Á◊¥Ã¨, ºÏ≤‚Õ¯¬Áµƒø…”√–‘. –Ë“™Õ¯¬Á‘À”™…Ãœ‡πÿ–≈œ¢”√”⁄Õ¯¬Á∂®Œª -->
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <!-- ∑√Œ Õ¯¬Áµƒ±‰ªØ, –Ë“™ƒ≥–©–≈œ¢”√”⁄Õ¯¬Á∂®Œª -->
+            <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+            <!-- ∑√Œ  ÷ª˙µ±«∞◊¥Ã¨, –Ë“™device id”√”⁄Õ¯¬Á∂®Œª -->
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <!-- ÷ß≥÷A-GPS∏®÷˙∂®Œª -->
+            <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+            <!-- ”√”⁄ log »’÷æ -->
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <application>
+                <meta-data
+                    android:name="TencentMapSDK"
+                    android:value="5WNBZ-2JYR6-SPUSL-M3WGH-U4KDT-K2FYV" />
+            </application>
+        </config-file>
+        <source-file src="src/android/permissions/Permission.java" target-dir="src/permissions"/>
+        <source-file src="src/android/permissions/RxPermissions.java" target-dir="src/permissions"/>
+        <source-file src="src/android/permissions/RxPermissionsFragment.java" target-dir="src/permissions"/>
+        <source-file src="src/android/TencentMap.java" target-dir="src/com/example/loaction"/>
+        <framework src="src/android/plugin.gradle" custom="true" type="gradleReference"/>
+    </platform>
+</plugin>
