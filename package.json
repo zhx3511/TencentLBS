@@ -9,7 +9,6 @@
       "android"
     ]
   },
-  ,
   "repository": {
     "type": "git",
     "url": "https://github.com/zhx3511/TencentLBS.git"
